@@ -1,103 +1,155 @@
 import Image from "next/image";
+import Head from "next/head";
+import { MapPin, Home, ListChecks } from "lucide-react";
 
-export default function Home() {
+const features = [
+  {
+    icon: <MapPin className="w-12 h-12 text-slate-700" />,
+    title: "Find nearby medicines",
+    description: "Search pharmacies in your area for required medicines",
+  },
+  {
+    icon: <Home className="w-12 h-12 text-slate-700" />,
+    title: "Check availability",
+    description: "Ensure the medicine is in stock at local pharmacies",
+  },
+  {
+    icon: <ListChecks className="w-12 h-12 text-slate-700" />,
+    title: "Compare prices",
+    description: "Find the best prices offered by different pharmacies",
+  },
+];
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div className="font-sans bg-gray-100 text-gray-900">
+      <Head>
+        <title>Local Medicine Finder</title>
+        <meta
+          name="description"
+          content="Find local pharmacies and medicine availability near you."
         />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+      </Head>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+      {/* Hero Section */}
+      <div className="min-h-screen bg-white text-gray-800 font-sans">
+        {/* Navbar */}
+        <nav className="flex items-center justify-between py-6 px-10 shadow-md">
+          <h1 className="text-2xl font-bold text-blue-800">
+            Local Medicine Finder
+          </h1>
+          <div className="space-x-6 text-gray-700 font-medium">
+            <a href="#" className="hover:text-blue-600">
+              Home
+            </a>
+            <a href="#" className="hover:text-blue-600">
+              About
+            </a>
+            <a href="#" className="hover:text-blue-600">
+              Contact
+            </a>
+          </div>
+        </nav>
+
+        {/* Hero Section */}
+        <section className="flex flex-col-reverse md:flex-row items-center justify-between px-10 md:px-20 py-20">
+          {/* Left Text */}
+          <div className="md:w-1/2 space-y-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-blue-900">
+              Local Medicine Finder
+            </h2>
+            <h3 className="text-xl font-medium text-gray-700">
+              Find Medicine Nearby
+            </h3>
+            <p className="text-gray-600 max-w-md">
+              Easily search for local pharmacies and check the availability of
+              medicines in your area.
+            </p>
+            {/* Icons */}
+            <div className="flex space-x-6 pt-4">
+              <div className="flex flex-col items-center">
+                <img
+                  src="/icons/pharmacy.png"
+                  alt="Pharmacy Icon"
+                  className="w-10 h-10 mb-1"
+                />
+                <span className="text-sm font-medium">Pharmacies</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <img
+                  src="/icons/medicine.png"
+                  alt="Medicine Icon"
+                  className="w-10 h-10 mb-1"
+                />
+                <span className="text-sm font-medium">Medicines</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <img
+                  src="/icons/location.png"
+                  alt="Location Icon"
+                  className="w-10 h-10 mb-1"
+                />
+                <span className="text-sm font-medium">Location Search</span>
+              </div>
+            </div>
+            <button className="mt-6 px-6 py-3 w-sm bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition">
+              Search
+            </button>
+          </div>
+
+          {/* Right Image */}
+          <div className="md:w-1/2 mb-10 md:mb-0">
+            <img
+              src="/hero-image.png"
+              alt="Medicine Finder Illustration"
+              className="w-full h-auto max-w-md mx-auto"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+        </section>
+      </div>
+
+      {/* Proof/Testimonials Section */}
+      <section className="py-16 bg-white text-center">
+        <h2 className="text-3xl font-semibold mb-8 text-gray-800">
+          What Our Users Say
+        </h2>
+        <div className="container mx-auto max-w-4xl">
+          <p className="text-xl text-gray-600 mb-8">
+            "I saved so much time by finding a pharmacy with the exact medicine
+            I needed! This app made it so easy and quick to purchase."
+            <br />— Alex P., Happy Customer
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+      </section>
+
+      {/* Features Section */}
+      <section className="py-16 bg-white text-center">
+        <h2 className="text-3xl font-bold text-gray-800 mb-12">Features</h2>
+        <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto px-6">
+          {features.map((feature, index) => (
+            <div key={index} className="flex flex-col items-center space-y-4">
+              {feature.icon}
+              <h3 className="text-lg font-semibold text-gray-900">
+                {feature.title}
+              </h3>
+              <p className="text-gray-600 max-w-xs">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      {/* CTA Section */}
+      <section className="bg-blue-600 text-white py-16 text-center">
+        <h2 className="text-3xl font-semibold mb-6">Get Started Today</h2>
+        <p className="text-lg mb-8">
+          Start searching for pharmacies in your area and find the medicines you
+          need.
+        </p>
         <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/explore"
+          className="bg-yellow-500 text-blue-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-yellow-400 transition transform hover:scale-105"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
+          Explore the App
         </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
     </div>
   );
 }
