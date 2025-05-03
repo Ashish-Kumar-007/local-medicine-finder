@@ -1,6 +1,18 @@
+"use client";
 import Image from "next/image";
 import Head from "next/head";
-import { MapPin, Home, ListChecks } from "lucide-react";
+import {
+  MapPin,
+  Home,
+  ListChecks,
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  Mail,
+} from "lucide-react";
+
+import { useState } from "react";
 
 const features = [
   {
@@ -19,7 +31,30 @@ const features = [
     description: "Find the best prices offered by different pharmacies",
   },
 ];
+
+const faqs = [
+  {
+    question: "Is the service free?",
+    answer: "Yes, our service is completely free of charge.",
+  },
+  {
+    question: "How accurate is the availability data?",
+    answer:
+      "We update the data frequently but cannot guarantee its completeness.",
+  },
+  {
+    question: "Can I order medicines through the platform?",
+    answer:
+      "No, we do not sell any medicines directly. Please contact a pharmacy.",
+  },
+];
+
 export default function HomePage() {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
   return (
     <div className="font-sans bg-gray-100 text-gray-900">
       <Head>
@@ -107,20 +142,6 @@ export default function HomePage() {
         </section>
       </div>
 
-      {/* Proof/Testimonials Section */}
-      <section className="py-16 bg-white text-center">
-        <h2 className="text-3xl font-semibold mb-8 text-gray-800">
-          What Our Users Say
-        </h2>
-        <div className="container mx-auto max-w-4xl">
-          <p className="text-xl text-gray-600 mb-8">
-            "I saved so much time by finding a pharmacy with the exact medicine
-            I needed! This app made it so easy and quick to purchase."
-            <br />— Alex P., Happy Customer
-          </p>
-        </div>
-      </section>
-
       {/* Features Section */}
       <section className="py-16 bg-white text-center">
         <h2 className="text-3xl font-bold text-gray-800 mb-12">Features</h2>
@@ -136,20 +157,80 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-      {/* CTA Section */}
-      <section className="bg-blue-600 text-white py-16 text-center">
-        <h2 className="text-3xl font-semibold mb-6">Get Started Today</h2>
-        <p className="text-lg mb-8">
-          Start searching for pharmacies in your area and find the medicines you
-          need.
+
+      {/* About Section */} 
+      <section className="bg-white py-16 px-6 max-w-full mx-auto">
+        <h2 className="text-4xl font-bold mb-4">About</h2>
+        <p className="text-gray-800 text-lg leading-relaxed">
+          A platform for finding medicine availability at pharmacies. It helps
+          users save time by quickly locating the medications they need.
         </p>
-        <a
-          href="/explore"
-          className="bg-yellow-500 text-blue-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-yellow-400 transition transform hover:scale-105"
-        >
-          Explore the App
-        </a>
       </section>
+
+      {/* Proof/Testimonials Section */}
+      <section className="py-16 bg-white text-center">
+        <h2 className="text-3xl font-semibold mb-8 text-gray-800">
+          What Our Users Say
+        </h2>
+        <div className="container mx-auto max-w-4xl">
+          <p className="text-xl text-gray-600 mb-8">
+            "I saved so much time by finding a pharmacy with the exact medicine
+            I needed! This app made it so easy and quick to purchase."
+            <br />— Alex P., Happy Customer
+          </p>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-white px-6 max-w-full mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-10">FAQ</h2>
+        <div className="space-y-6">
+          {faqs.map((faq, index) => (
+            <div
+              key={index}
+              className="border-b pb-4 cursor-pointer"
+              onClick={() => toggleFAQ(index)}
+            >
+              <h3 className="font-semibold text-lg flex justify-between items-center">
+                {faq.question}
+                <span className="text-gray-500">
+                  {openIndex === index ? "-" : "+"}
+                </span>
+              </h3>
+              {openIndex === index && (
+                <p className="mt-2 text-gray-700 transition-all">
+                  {faq.answer}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer Section */}
+      <footer className="text-center py-10 bg-white text-gray-700">
+        <div className="flex justify-center space-x-6 mb-4">
+          <Facebook className="w-5 h-5" />
+          <Twitter className="w-5 h-5" />
+          <Instagram className="w-5 h-5" />
+          <Linkedin className="w-5 h-5" />
+        </div>
+
+        <div className="flex justify-center items-center flex-wrap gap-4 text-sm mb-2">
+          <div className="flex items-center space-x-2">
+            <Mail className="w-4 h-4" />
+            <span>info@example.com</span>
+          </div>
+          <a href="#" className="hover:underline">
+            Terms
+          </a>
+          <a href="#" className="hover:underline">
+            Privacy
+          </a>
+        </div>
+
+        <p className="text-sm mt-2">© 2024 Company. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
