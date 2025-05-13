@@ -101,20 +101,13 @@ export default function HomePage() {
   };
   return (
     <div className="font-sans bg-gray-100 text-gray-900">
-      <Head>
-        <title>Local Medicine Finder</title>
-        <meta
-          name="description"
-          content="Find local pharmacies and medicine availability near you."
-        />
-      </Head>
 
       {/* Hero Section */}
       <div className="min-h-screen bg-white text-gray-800 font-sans">
         {/* Navbar */}
         <nav className="flex items-center justify-between py-6 px-10 shadow-md">
           <h1 className="text-2xl font-bold text-blue-800">
-            Local Medicine Finder
+            PharmaBuddy
           </h1>
           <div className="space-x-6 text-gray-700 font-medium">
             <a href="#" className="hover:text-blue-600">
@@ -134,7 +127,7 @@ export default function HomePage() {
           {/* Left Text */}
           <div className="md:w-1/2 space-y-6">
             <h2 className="text-4xl md:text-5xl font-bold text-blue-900">
-              Local Medicine Finder
+              PharmaBuddy
             </h2>
             <h3 className="text-xl font-medium text-gray-700">
               Find Medicine Nearby
@@ -356,7 +349,7 @@ export default function HomePage() {
         <div className="flex justify-center items-center flex-wrap gap-4 text-sm mb-2">
           <div className="flex items-center space-x-2">
             <Mail className="w-4 h-4" />
-            <span>info@example.com</span>
+            <span>info@pharmabuddy.com</span>
           </div>
           <a href="#" className="hover:underline">
             Terms
@@ -366,7 +359,7 @@ export default function HomePage() {
           </a>
         </div>
 
-        <p className="text-sm mt-2">© 2024 Company. All rights reserved.</p>
+        <p className="text-sm mt-2">© 2024 PharmaBuddy. All rights reserved.</p>
       </footer>
     </div>
   );
