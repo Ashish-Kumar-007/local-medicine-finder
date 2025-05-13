@@ -14,6 +14,26 @@ import {
 
 import { useState } from "react";
 
+import { FaSearch, FaMapMarkerAlt, FaClipboardCheck } from "react-icons/fa";
+
+const steps = [
+  {
+    title: "Search Medicine",
+    icon: <FaSearch className="text-3xl text-blue-600" />,
+    desc: "Enter the name of the medicine you’re looking for.",
+  },
+  {
+    title: "View Nearby Pharmacies",
+    icon: <FaMapMarkerAlt className="text-3xl text-green-600" />,
+    desc: "See which nearby stores have it in stock.",
+  },
+  {
+    title: "Compare & Purchase",
+    icon: <FaClipboardCheck className="text-3xl text-purple-600" />,
+    desc: "Compare prices and pick the best option to purchase or pick up.",
+  },
+];
+
 const features = [
   {
     icon: <MapPin className="w-12 h-12 text-slate-700" />,
@@ -46,6 +66,30 @@ const faqs = [
     question: "Can I order medicines through the platform?",
     answer:
       "No, we do not sell any medicines directly. Please contact a pharmacy.",
+  },
+];
+
+const testimonials = [
+  {
+    name: "Amit R.",
+    role: "College Student",
+    image: "/users/amit.jpg", // or use a placeholder service like https://i.pravatar.cc/150?img=3
+    quote:
+      "MediMap saved me a lot of time when I urgently needed medicine. It found nearby stores instantly!",
+  },
+  {
+    name: "Neha S.",
+    role: "Working Professional",
+    image: "/users/neha.jpg",
+    quote:
+      "I used to call 4-5 pharmacies for one medicine. Now I just check MediMap and walk to the right place!",
+  },
+  {
+    name: "Dr. Rajiv M.",
+    role: "General Physician",
+    image: "/users/rajiv.jpg",
+    quote:
+      "As a doctor, I recommend MediMap to patients. It ensures they get medicines quickly and affordably.",
   },
 ];
 
@@ -158,26 +202,119 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* About Section */} 
-      <section className="bg-white py-16 px-6 max-w-full mx-auto">
-        <h2 className="text-4xl font-bold mb-4">About</h2>
-        <p className="text-gray-800 text-lg leading-relaxed">
-          A platform for finding medicine availability at pharmacies. It helps
-          users save time by quickly locating the medications they need.
-        </p>
+      {/* Problem & Solution Section */}
+      <section className="bg-white py-16 px-6 md:px-20">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-12 text-center">
+            The Problem & Our Solution
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Problem Section */}
+            <div className="bg-red-50 p-6 rounded-2xl shadow-md border border-red-200">
+              <h3 className="text-2xl font-semibold text-red-600 mb-4">
+                The Problem
+              </h3>
+              <ul className="space-y-3 text-gray-700">
+                <li>❌ Difficulty finding specific medicines nearby</li>
+                <li>❌ Wasting time calling multiple pharmacies</li>
+                <li>❌ Unawareness of price differences</li>
+                <li>❌ No real-time availability data</li>
+              </ul>
+            </div>
+
+            {/* Solution Section */}
+            <div className="bg-green-50 p-6 rounded-2xl shadow-md border border-green-200">
+              <h3 className="text-2xl font-semibold text-green-600 mb-4">
+                The MediMap Solution
+              </h3>
+              <ul className="space-y-3 text-gray-700">
+                <li>✅ Real-time search for medicines in local pharmacies</li>
+                <li>✅ Availability check before visiting</li>
+                <li>✅ Price comparison from nearby stores</li>
+                <li>✅ Save time, save money, stay informed</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="bg-white py-16 px-6 md:px-20">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
+            How It Works
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-10">
+            {steps.map((step, index) => (
+              <div
+                key={index}
+                className="bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-lg transition duration-300"
+              >
+                <div className="flex justify-center mb-4">{step.icon}</div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  {step.title}
+                </h3>
+                <p className="text-gray-600">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Proof/Testimonials Section */}
-      <section className="py-16 bg-white text-center">
-        <h2 className="text-3xl font-semibold mb-8 text-gray-800">
-          What Our Users Say
-        </h2>
-        <div className="container mx-auto max-w-4xl">
-          <p className="text-xl text-gray-600 mb-8">
-            "I saved so much time by finding a pharmacy with the exact medicine
-            I needed! This app made it so easy and quick to purchase."
-            <br />— Alex P., Happy Customer
+      <section className="bg-white py-16 px-6 md:px-20">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
+            What Our Users Say
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((t, index) => (
+              <div
+                key={index}
+                className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition duration-300 text-left"
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <img
+                    src={t.image}
+                    alt={t.name}
+                    className="w-14 h-14 rounded-full object-cover"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      target.onerror = null;
+                      target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                        t.name
+                      )}&background=0D8ABC&color=fff`;
+                    }}
+                  />
+                  <div>
+                    <p className="font-semibold text-gray-800">{t.name}</p>
+                    <p className="text-sm text-gray-500">{t.role}</p>
+                  </div>
+                </div>
+                <p className="text-gray-700 italic">“{t.quote}”</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-16 px-6 md:px-20">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Ready to Find Your Medicines Instantly?
+          </h2>
+          <p className="text-lg md:text-xl mb-8">
+            Start using MediMap and locate nearby pharmacies in seconds.
           </p>
+          <a
+            href="/search"
+            className="inline-block bg-white text-blue-600 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-blue-100 transition duration-300"
+          >
+            Start Finding Medicines Now
+          </a>
         </div>
       </section>
 
